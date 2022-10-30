@@ -1,12 +1,10 @@
+import { useContext } from "react";
+import { ShopContext } from "../context";
 import BasketItem from "./BasketItem";
 
-const BasketList = ({
-  order,
-  handleBasketShow = Function.prototype,
-  removeFromBasket = Function.prototype,
-  increaseQuantity = Function.prototype,
-  decreaseQuantity = Function.prototype,
-}) => {
+const BasketList = () => {
+  const { order = [], handleBasketShow } = useContext(ShopContext);
+
   const totalPrice = order.reduce((sum, el) => {
     return sum + el.price * el.quantity;
   }, 0);
@@ -17,15 +15,7 @@ const BasketList = ({
         Basket
       </li>
       {order.length ? (
-        order.map((el) => (
-          <BasketItem
-            key={el.id}
-            {...el}
-            removeFromBasket={removeFromBasket}
-            increaseQuantity={increaseQuantity}
-            decreaseQuantity={decreaseQuantity}
-          />
-        ))
+        order.map((el) => <BasketItem key={el.id} {...el} />)
       ) : (
         <li className="collection-item">Basket is empty</li>
       )}

@@ -1,11 +1,9 @@
-const GoodsItem = ({
-  id,
-  name,
-  description,
-  price,
-  full_background,
-  addToBasket = Function.prototype,
-}) => {
+import { useContext } from "react";
+import ShopContext from "../context";
+
+const GoodsItem = ({ id, name, description, price, full_background }) => {
+  const { addToBasket } = useContext(ShopContext);
+
   return (
     <div className="card">
       <div className="card-image">
