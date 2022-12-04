@@ -1,4 +1,4 @@
-# One Page Application 🎮
+# Fortnite Page Application 🎮
 
 React Web Application using Fortnite API
 
